@@ -32,7 +32,7 @@ recognition.onresult = function(event) {
   var word = event.results[last][0].transcript;
 
   diagnostic.textContent = 'Result received: ' + word + '.';
-  insertTD(word);
+  insertTask(word);
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
 
@@ -48,36 +48,22 @@ recognition.onerror = function(event) {
 //injecting new task by voice code
 
 
-function insertTD(textAdd,removeButton){
+function insertTask(taskName){
   let myTDL = document.createElement('li')
   let removeButton = document.createElement('button')
-  myTDL.textContent = textAdd;
+  myTDL.textContent = taskName;
   document.getElementById('todo-ul').appendChild(myTDL)
   document.getElementById('todo-ul').appendChild(removeButton)
 }
 
 
-
-
-//index js for creating new tasks
-
-let integrationForm = document.getElementById('add-task')
-integrationForm.addEventListener('submit', function(event) {
+let newTaskForm = document.getElementById('add-task')
+newTaskForm.addEventListener('submit', function(event) {
   event.preventDefault();
-  let integrationName = document.getElementById('task-label').value;
-  let createRemoveButton = document.createElement("BUTTON");
-  
-  console.log(` ${integrationName} `);
-  document.getElementById('task-label').value = '';
-  insertTD(integrationName);
-  removeButton()
-  function removeItem(e) {
-    e.target.parentElement.removeChild(e.target);
-    }
-  //integrationForm.addEventListener('remove',function(event){
-    
-  //})
-})
+  let taskName = document.getElementById('task-label').value;
 
-//using google calandar
+  console.log(`${taskName}`);
+  document.getElementById('task-label').value = '';
+  insertTask(taskName);
+});
 
