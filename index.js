@@ -50,10 +50,8 @@ recognition.onerror = function(event) {
 
 function insertTask(taskName){
   let myTDL = document.createElement('li')
-  let removeButton = document.createElement('button')
   myTDL.textContent = taskName;
   document.getElementById('todo-ul').appendChild(myTDL)
-  document.getElementById('todo-ul').appendChild(removeButton)
 }
 
 
